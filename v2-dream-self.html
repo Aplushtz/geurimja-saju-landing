@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>그림자사주 — 네가 평생 모른 척한 기질</title>
+<meta name="description" content="억눌린 기질을 결함이 아니라 에너지로 읽어줘. 그림자사주가 사주 원국의 이면을 비춥니다." />
+<meta property="og:title" content="그림자사주 — 네가 평생 모른 척한 기질" />
+<meta property="og:description" content="꿈에서 터지는 건 성격이 아니야. 억눌러온 기질이 새는 거야." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fastly.jsdelivr.net" crossorigin />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" as="style" crossorigin
+  href="https://fastly.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&display=swap" />
+<style>
+  :root{
+    --void:#050507;
+    --bg:#08080C;
+    --bg-2:#0C0C12;
+    --bg-3:#101017;
+    --coal:#14141C;
+    --surface:#16161E;
+    --surface-hi:#1E1E29;
+    --border:#272732;
+    --border-soft:#1A1A22;
+    --accent:#C01029;
+    --accent-soft:#7E0A1B;
+    --accent-glow:rgba(192,16,41,.5);
+    --silver:#D6D6E0;
+    --gold:#B8924A;
+    --text:#ECECEF;
+    --text-muted:#8E8E99;
+    --text-dim:#54545E;
+    --day:#E8E2D4;
+    --day-text:#191510;
+    --r:16px;
+    --maxw:520px;
+    --ease:cubic-bezier(.16,1,.3,1);
+    --serif:"Nanum Myeongjo","Apple SD Gothic Neo",serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:"Pretendard","Apple SD Gothic Neo",system-ui,sans-serif;
+    line-height:1.62;letter-spacing:-.01em;
+    overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;position:relative}
+  .han{font-family:var(--serif);font-weight:800}
+  .accent{color:var(--accent)}
+  .muted{color:var(--text-muted)}
+  section{position:relative}
+
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:
+      radial-gradient(86% 42% at 50% 6%, rgba(214,214,224,.055), transparent 62%),
+      radial-gradient(120% 62% at 50% -10%, rgba(192,16,41,.13), transparent 56%),
+      radial-gradient(100% 56% at 50% 118%, rgba(126,10,27,.10), transparent 60%),
+      radial-gradient(140% 100% at 50% 50%, transparent 55%, rgba(5,5,7,.55) 100%),
+      linear-gradient(180deg, var(--void), var(--bg) 24%, var(--bg) 76%, var(--void));
+  }
+  body::after{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.035;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap,header,footer{position:relative;z-index:1}
+
+  .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+    padding:72px 0 52px;text-align:center}
+  .hero>*{position:relative;z-index:1}
+
+  .hero-art{display:block;width:min(72vw,288px);height:auto;margin:0 auto 18px;
+    filter:drop-shadow(0 24px 56px rgba(192,16,41,.22));
+    animation:floaty 7.5s var(--ease) infinite}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+  .kicker{display:inline-flex;align-items:center;gap:8px;
+    font-size:11.5px;letter-spacing:.16em;color:var(--gold);
+    border:1px solid var(--border);border-radius:999px;
+    padding:6px 14px;margin:0 auto 18px;background:rgba(18,18,24,.55);backdrop-filter:blur(6px)}
+  .kicker .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+
+  .brandline{font-family:var(--serif);font-weight:800;
+    font-size:clamp(2.6rem,14vw,4.1rem);line-height:1;letter-spacing:.05em;
+    margin-bottom:16px;display:inline-block;position:relative;
+    background:linear-gradient(176deg,#F4F4F8 0%,#CFCFD9 52%,#7E7E8A 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 0 38px rgba(214,214,224,.12)}
+  .brandline .yeong{
+    -webkit-text-fill-color:var(--accent);color:var(--accent);
+    font-size:.5em;vertical-align:.42em;margin-left:.04em;opacity:.92;
+    text-shadow:0 0 18px var(--accent-glow)}
+
+  h1{font-weight:600;line-height:1.4;
+    font-size:clamp(1.22rem,5.2vw,1.62rem);letter-spacing:-.01em;
+    margin:0 auto 22px;max-width:21ch;color:var(--text-muted);word-break:keep-all}
+  h1 .l2{color:var(--text);font-weight:800}
+  h1 .l2 b{color:var(--accent)}
+  .sub{font-size:clamp(.95rem,4.2vw,1.1rem);color:var(--text-muted);
+    max-width:25ch;margin:0 auto 14px;word-break:keep-all}
+  .sub b{color:var(--silver);font-weight:600}
+  .hyeon{font-size:14px;color:var(--text-dim);font-style:italic;
+    max-width:30ch;margin:0 auto 32px;word-break:keep-all}
+  .cta{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    background:var(--accent);color:#fff;font-weight:700;font-size:17px;
+    border:none;border-radius:14px;padding:17px 30px;cursor:pointer;
+    box-shadow:0 10px 30px -8px rgba(179,18,43,.6);
+    transition:transform .25s var(--ease),box-shadow .25s var(--ease);
+    text-decoration:none;width:100%;max-width:320px;margin:0 auto}
+  .cta:hover{transform:translateY(-2px);box-shadow:0 16px 40px -8px rgba(179,18,43,.75)}
+  .cta:active{transform:translateY(0) scale(.99)}
+  .scroll-hint{margin-top:30px;font-size:12px;color:var(--text-dim);
+    animation:bob 2.4s var(--ease) infinite}
+  @keyframes bob{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(6px);opacity:1}}
+
+  .sec{padding:64px 0;position:relative}
+  .sec.alt{background:linear-gradient(180deg,var(--bg-2),var(--bg-3) 50%,var(--bg-2));
+    border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft)}
+  .eyebrow{font-size:12.5px;letter-spacing:.14em;color:var(--accent);
+    font-weight:700;text-transform:uppercase;margin-bottom:14px}
+  h2{font-family:var(--serif);font-weight:800;font-size:clamp(1.7rem,7vw,2.2rem);
+    line-height:1.22;margin-bottom:14px;word-break:keep-all}
+  .lead{color:var(--text-muted);font-size:15.5px;margin-bottom:30px;word-break:keep-all}
+
+  .contrast{display:grid;gap:14px}
+  .cc{border-radius:var(--r);padding:24px 22px;position:relative;overflow:hidden;
+    border:1px solid var(--border)}
+  .cc .tag{font-size:12.5px;font-weight:700;letter-spacing:.04em;margin-bottom:12px;
+    display:flex;align-items:center;gap:7px}
+  .cc h3{font-family:var(--serif);font-size:1.34rem;margin-bottom:9px;line-height:1.3}
+  .cc p{font-size:14.5px;word-break:keep-all}
+  .cc.day{background:linear-gradient(160deg,#EDE7DA,#D8CFBE);color:var(--day-text)}
+  .cc.day .tag{color:#8a6d28}.cc.day p{color:#4a4034}
+  .cc.shadow{background:linear-gradient(160deg,#14141A,#0c0c10);color:var(--text)}
+  .cc.shadow .tag{color:var(--accent)}.cc.shadow p{color:var(--text-muted)}
+  .cc.shadow::after{content:"影";position:absolute;right:-12px;bottom:-30px;
+    font-family:var(--serif);font-size:130px;color:var(--accent);opacity:.07;line-height:1}
+  .vs{position:absolute;left:50%;top:calc(50% - 7px);transform:translate(-50%,-50%);
+    z-index:2;background:var(--accent);color:#fff;font-family:var(--serif);
+    width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:15px;box-shadow:0 0 0 6px var(--bg),0 8px 20px -4px rgba(179,18,43,.6)}
+
+  .demo{background:var(--bg-2);border:1px solid var(--border);border-radius:20px;
+    padding:26px 22px 30px}
+  .field{margin-bottom:14px}
+  label{display:block;font-size:13px;color:var(--text-muted);margin-bottom:7px;font-weight:600}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  input,select{width:100%;background:var(--surface);color:var(--text);
+    border:1px solid var(--border);border-radius:11px;padding:13px 14px;font-size:15px;
+    font-family:inherit;transition:border-color .2s}
+  input:focus,select:focus{outline:none;border-color:var(--accent)}
+  select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A8A92' stroke-width='1.6'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 14px center;padding-right:34px}
+  .seg{display:flex;gap:8px}
+  .seg button{flex:1;background:var(--surface);border:1px solid var(--border);
+    color:var(--text-muted);border-radius:11px;padding:12px;font-size:14px;cursor:pointer;
+    font-family:inherit;transition:.18s}
+  .seg button.on{background:var(--accent-soft);border-color:var(--accent);color:#fff}
+  .demo .cta{margin-top:8px}
+
+  .loading{text-align:center;padding:30px 10px}
+  .loading .orb{width:46px;height:46px;margin:0 auto 16px;border-radius:50%;
+    border:2px solid var(--border);border-top-color:var(--accent);animation:spin .8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .loading p{color:var(--text-muted);font-size:14px}
+
+  .result{padding-top:4px}
+  .result .demobadge{display:inline-block;font-size:11px;color:var(--text-dim);
+    border:1px solid var(--border);border-radius:6px;padding:3px 8px;margin-bottom:18px}
+  .gauge-wrap{text-align:center;margin-bottom:8px}
+  .gauge{position:relative;width:170px;height:170px;margin:0 auto 6px}
+  .gauge svg{transform:rotate(-90deg)}
+  .gauge .num{position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center}
+  .gauge .num b{font-family:var(--serif);font-size:46px;line-height:1;color:var(--text)}
+  .gauge .num b span{font-size:20px;color:var(--text-dim)}
+  .gauge .band{font-size:13px;color:var(--accent);font-weight:700;margin-top:4px;letter-spacing:.03em}
+  .gap-label{font-size:13.5px;color:var(--text-muted);margin-bottom:22px}
+  .gap-label b{color:var(--text)}
+
+  .shadow-card{background:var(--surface);border:1px solid var(--border);
+    border-radius:14px;padding:20px;position:relative;overflow:hidden}
+  .shadow-card .ttl{font-family:var(--serif);color:var(--accent);font-size:15px;
+    font-weight:800;margin-bottom:12px;display:flex;align-items:center;gap:7px}
+  .shadow-card .clear{font-size:15.5px;line-height:1.7;margin-bottom:2px}
+  .shadow-card .blurred{position:relative;margin-top:6px}
+  .shadow-card .blurred p{filter:blur(6px);user-select:none;font-size:15px;
+    line-height:1.8;color:var(--text-muted);pointer-events:none}
+  .lock{position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:10px;
+    background:linear-gradient(180deg,rgba(20,20,26,0),rgba(20,20,26,.55) 40%,rgba(20,20,26,.92))}
+  .lock .ic{font-size:22px}
+  .lock span{font-size:13.5px;color:var(--text);font-weight:600;text-align:center;padding:0 20px}
+
+  .trust{display:grid;gap:10px;margin-top:6px}
+  .trust .t{display:flex;gap:12px;align-items:flex-start;background:var(--surface);
+    border:1px solid var(--border);border-radius:12px;padding:15px 16px}
+  .trust .t .ic{font-size:18px;flex-shrink:0;margin-top:1px}
+  .trust .t b{font-size:14.5px;display:block;margin-bottom:2px}
+  .trust .t p{font-size:13px;color:var(--text-muted);word-break:keep-all}
+
+  .reviews{display:grid;gap:12px}
+  .rev{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:17px 18px}
+  .rev .top{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+  .rev .badge{font-size:12px;font-family:var(--serif);background:var(--surface-hi);
+    border:1px solid var(--border);border-radius:7px;padding:3px 9px;color:var(--gold)}
+  .rev .nick{font-size:13px;color:var(--text-muted)}
+  .rev .stars{margin-left:auto;color:var(--accent);font-size:12px;letter-spacing:1px}
+  .rev p{font-size:14.5px;line-height:1.65;word-break:keep-all}
+  .rev-note{font-size:11.5px;color:var(--text-dim);text-align:center;margin-top:12px}
+
+  .final{text-align:center;padding:72px 0 40px}
+  .final h2{margin-bottom:10px}
+  .final .lead{margin-bottom:26px}
+  .capture{display:flex;flex-direction:column;gap:10px;max-width:380px;margin:0 auto}
+  .capture input{text-align:center}
+  .ok-msg{display:none;background:var(--surface);border:1px solid var(--accent);
+    border-radius:14px;padding:22px;max-width:380px;margin:0 auto}
+  .ok-msg b{font-family:var(--serif);color:var(--accent);font-size:17px;display:block;margin-bottom:6px}
+  .ok-msg p{font-size:14px;color:var(--text-muted)}
+
+  footer{padding:34px 0 60px;text-align:center;border-top:1px solid var(--border);margin-top:30px}
+  footer .logo{font-family:var(--serif);font-weight:800;font-size:18px;margin-bottom:8px}
+  footer .logo .accent{color:var(--accent)}
+  footer p{font-size:11.5px;color:var(--text-dim);line-height:1.7;max-width:34ch;margin:0 auto}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .scroll-hint,.gauge *,.hero-art{animation:none!important}
+    html{scroll-behavior:auto}
+  }
+  @media (min-width:560px){
+    .contrast{grid-template-columns:1fr 1fr}
+    .vs{top:50%}
+  }
+</style>
+</head>
+<body>
+
+<!-- ① HERO — 꿈속나 variant -->
+<header class="hero" id="top">
+  <div class="wrap">
+
+    <svg class="hero-art" viewBox="0 0 360 470" fill="none" xmlns="http://www.w3.org/2000/svg"
+         role="img" aria-label="그림자 사주 — 빛의 나와 그림자의 나가 거울처럼 마주한 형상">
+      <defs>
+        <radialGradient id="moon" cx="42%" cy="36%" r="72%">
+          <stop offset="0%" stop-color="#F4F1EB"/>
+          <stop offset="52%" stop-color="#C9C7D2"/>
+          <stop offset="100%" stop-color="#37373F"/>
+        </radialGradient>
+        <linearGradient id="lightFig" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ECECF2"/>
+          <stop offset="100%" stop-color="#92929E"/>
+        </linearGradient>
+        <linearGradient id="shadowFig" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#5C0A16"/>
+          <stop offset="58%" stop-color="#9E0E22"/>
+          <stop offset="100%" stop-color="#240308"/>
+        </linearGradient>
+        <linearGradient id="mirror" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#C01029" stop-opacity="0"/>
+          <stop offset="50%" stop-color="#C01029" stop-opacity="1"/>
+          <stop offset="100%" stop-color="#C01029" stop-opacity="0"/>
+        </linearGradient>
+        <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#D6D6E0" stop-opacity=".20"/>
+          <stop offset="70%" stop-color="#D6D6E0" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="1.7"/>
+        </filter>
+        <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+          <feGaussianBlur stdDeviation="6"/>
+        </filter>
+      </defs>
+      <circle cx="180" cy="150" r="142" fill="url(#halo)"/>
+      <circle cx="180" cy="150" r="132" fill="none" stroke="#1E1E28" stroke-width="1" opacity=".55"/>
+      <circle cx="180" cy="150" r="118" fill="none" stroke="#2A2A36" stroke-width="1" opacity=".6"/>
+      <circle cx="180" cy="150" r="96" fill="url(#moon)"/>
+      <circle cx="214" cy="150" r="96" fill="#0B0B11" opacity=".36"/>
+      <circle cx="206" cy="150" r="96" fill="none" stroke="#C01029" stroke-width="1.4" opacity=".25"/>
+      <text x="150" y="180" font-family="Nanum Myeongjo, serif" font-size="84" font-weight="800" fill="#2C2C38" opacity=".24">影</text>
+      <g fill="#D6D6E0">
+        <circle cx="92"  cy="92"  r="1.6" opacity=".8"/>
+        <circle cx="268" cy="118" r="1.3" opacity=".6"/>
+        <circle cx="250" cy="62"  r="1"   opacity=".5"/>
+        <circle cx="108" cy="48"  r="1.2" opacity=".55"/>
+        <circle cx="300" cy="198" r="1.4" opacity=".5"/>
+        <circle cx="60"  cy="172" r="1.1" opacity=".45"/>
+      </g>
+      <path d="M180,104 C156,104 137,123 137,150 C137,172 151,191 171,196 L171,210 C133,216 104,238 100,270 L260,270 C256,238 227,216 189,210 L189,196 C209,191 223,172 223,150 C223,123 204,104 180,104 Z" fill="url(#lightFig)"/>
+      <path d="M180,104 C156,104 137,123 137,150 C137,172 151,191 171,196 L171,210 C133,216 104,238 100,270" fill="none" stroke="#F2F2F8" stroke-width="1" opacity=".32"/>
+      <ellipse cx="180" cy="270" rx="96" ry="9" fill="#C01029" opacity=".28" filter="url(#glow)"/>
+      <rect x="42" y="269" width="276" height="2" fill="url(#mirror)"/>
+      <g transform="translate(180,540) scale(1.07,-1) translate(-180,0)">
+        <path d="M180,104 C156,104 137,123 137,150 C137,172 151,191 171,196 L171,210 C133,216 104,238 100,270 L260,270 C256,238 227,216 189,210 L189,196 C209,191 223,172 223,150 C223,123 204,104 180,104 Z" fill="url(#shadowFig)" filter="url(#soft)"/>
+        <path d="M180,104 C156,104 137,123 137,150 C137,172 151,191 171,196 L171,210 C133,216 104,238 100,270 L260,270 C256,238 227,216 189,210 L189,196 C209,191 223,172 223,150 C223,123 204,104 180,104 Z" fill="none" stroke="#E03050" stroke-width="1.3" opacity=".42"/>
+      </g>
+      <text x="144" y="438" font-family="Nanum Myeongjo, serif" font-size="62" font-weight="800" fill="#C01029" opacity=".13">影</text>
+    </svg>
+
+    <span class="kicker"><span class="dot"></span>그림자사주 · 影</span>
+    <div class="brandline">그림자 사주<span class="yeong">影</span></div>
+    <h1>네가 평생 모른 척한 기질,<br><span class="l2"><b>여기</b> 있어.</span></h1>
+    <p class="sub">억눌린 기질을 결함이 아니라<br><b>에너지</b>로 읽어줘.</p>
+    <p class="hyeon">"억눌러온 기질이 꿈에서 터지면, 그건 신호야." — 현도사</p>
+    <a href="#demo" class="cta">🌑 내 그림자 오행 확인하기 →</a>
+    <div class="scroll-hint">아래로 — 네 그림자가 기다린다</div>
+  </div>
+</header>
+
+<!-- ② 대비 블록 — 꿈속나 테마 -->
+<section class="sec alt">
+  <div class="wrap reveal">
+    <div class="eyebrow">남들이 보는 너 vs 꿈에서 터지는 너</div>
+    <h2>왜 착한 사람이 꿈에서는 그래?</h2>
+    <p class="lead">낮에는 다 참는데 꿈에서는 왜 그렇게 나오는지 — <b style="color:var(--text)">결함이 아니야.</b> 억눌러온 기질이 새는 거야.</p>
+    <div class="contrast">
+      <div class="cc day">
+        <div class="tag">🌞 낮의 너</div>
+        <h3>"쟤는 화 한번 안 내."</h3>
+        <p>다들 그렇게 알고 있어. "배려 깊다", "착하다". 네가 오래 공들여 유지하는 이미지.</p>
+      </div>
+      <div class="cc shadow">
+        <div class="tag">🌑 꿈 속 너</div>
+        <h3>꿈에서 터지는 그 분노</h3>
+        <p>억눌러온 기질이 새는 것. 이름 붙이면 결함이 아니라 에너지가 돼. 원국이 증거야.</p>
+      </div>
+      <div class="vs han">抑</div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ 데모 입력 → ④ 결과 -->
+<section class="sec" id="demo">
+  <div class="wrap reveal">
+    <div class="eyebrow">그림자 사주</div>
+    <h2>억눌린 기질, 현도사가 비춘다</h2>
+    <p class="lead">생년월일시만 넣으면 — 네가 평생 외면한 기질이 원국 어느 오행에서 오는지 나와.</p>
+
+    <div class="demo">
+      <div id="step-input">
+        <div class="field">
+          <label>생년월일 (양력)</label>
+          <input type="date" id="birth" min="1930-01-01" max="2025-12-31" />
+        </div>
+        <div class="row">
+          <div class="field">
+            <label>태어난 시</label>
+            <select id="hour">
+              <option value="?">모름</option>
+              <option value="23">자시 (23~01)</option>
+              <option value="1">축시 (01~03)</option>
+              <option value="3">인시 (03~05)</option>
+              <option value="5">묘시 (05~07)</option>
+              <option value="7">진시 (07~09)</option>
+              <option value="9">사시 (09~11)</option>
+              <option value="11">오시 (11~13)</option>
+              <option value="13">미시 (13~15)</option>
+              <option value="15">신시 (15~17)</option>
+              <option value="17">유시 (17~19)</option>
+              <option value="19">술시 (19~21)</option>
+              <option value="21">해시 (21~23)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>성별</label>
+            <div class="seg" id="sex">
+              <button type="button" data-v="여">여</button>
+              <button type="button" data-v="남">남</button>
+            </div>
+          </div>
+        </div>
+        <button class="cta" id="analyze">🌑 내 그림자 오행 확인하기 →</button>
+      </div>
+
+      <div id="step-loading" class="loading" style="display:none">
+        <div class="orb"></div>
+        <p>현도사가 네 원국 억눌린 기질을 찾는 중…</p>
+      </div>
+
+      <div id="step-result" class="result" style="display:none">
+        <span class="demobadge">미리보기 데모 · 실제 리포트는 만세력 코드 계산 기반</span>
+        <div class="gauge-wrap">
+          <div class="gauge">
+            <svg width="170" height="170" viewBox="0 0 170 170">
+              <circle cx="85" cy="85" r="74" fill="none" stroke="#26262F" stroke-width="13"/>
+              <circle id="arc" cx="85" cy="85" r="74" fill="none" stroke="#B3122B" stroke-width="13"
+                stroke-linecap="round" stroke-dasharray="465" stroke-dashoffset="465"
+                style="transition:stroke-dashoffset 1.4s cubic-bezier(.16,1,.3,1)"/>
+            </svg>
+            <div class="num"><b id="gnum">0<span>/100</span></b><div class="band" id="gband">그림자 갭 지수</div></div>
+          </div>
+        </div>
+        <p class="gap-label">낮의 너와 그림자가 <b id="gtext">—</b>. 그러니까 가끔 꿈에서 나오지.</p>
+
+        <div class="shadow-card">
+          <div class="ttl">🌑 너의 억눌린 기질 <span style="color:var(--text-dim);font-weight:400;font-size:12px">(현도사)</span></div>
+          <p class="clear" id="clearline">"낮에는 다 참는데, 꿈에서 그렇게 나오는 이유가 있어.</p>
+          <div class="blurred">
+            <p>그러면서 속으론 다 기억하지. 누가 너한테 뭘 부탁했는지, 누가 선을 넘었는지 ─ 다 적어두고 혼자 삭이잖아. 겉은 무던한데 속은 한 번도 무던한 적 없었어. 그게 네가……</p>
+            <div class="lock">
+              <span class="ic">🔒</span>
+              <span>잠금 해제하면 억눌린 기질 원국 오행, 현도사가 전부 비춰줄게.</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="#capture" class="cta" style="margin-top:18px">전체 그림자 오행 리포트 받기 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ 신뢰 장치 -->
+<section class="sec" style="padding-top:8px">
+  <div class="wrap reveal">
+    <div class="trust">
+      <div class="t"><span class="ic">🧮</span><div><b>8자 원국은 코드가 계산합니다</b><p>만세력(절기·자시)은 코드로 정확히 계산하고, 해석만 AI가 합니다. 'AI가 날짜 틀린다'는 그 문제, 우리는 안 그래요.</p></div></div>
+      <div class="t"><span class="ic">🗝️</span><div><b>생년월일은 분석 후 파기</b><p>식별 정보는 리포트 생성 뒤 파기합니다. 학습에 쓰지 않아요.</p></div></div>
+      <div class="t"><span class="ic">🌗</span><div><b>좋은 말만 하지 않습니다</b><p>듣기 좋은 소리 대신 네가 외면한 패턴을 비춥니다. 단, 끝은 늘 '그걸 어떻게 쓸지'로 닫아요.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ 사회증거 -->
+<section class="sec alt">
+  <div class="wrap reveal">
+    <div class="eyebrow">먼저 비춰본 사람들</div>
+    <h2>"소름 돋았다"는 그 반응</h2>
+    <div class="reviews">
+      <div class="rev">
+        <div class="top"><span class="badge">辛金일간 💎</span><span class="nick">je****</span><span class="stars">★★★★★</span></div>
+        <p>좋은 말 안 한다더니 진짜 안 하더라… 근데 그게 다 맞아서 더 할 말이 없음.</p>
+      </div>
+      <div class="rev">
+        <div class="top"><span class="badge">甲木일간 🌳</span><span class="nick">min***</span><span class="stars">★★★★★</span></div>
+        <p>"먼저 끊는 게 의리가 아니라 패턴"이라는 문장에서 한참 멍때림.</p>
+      </div>
+      <div class="rev">
+        <div class="top"><span class="badge">癸水일간 🌊</span><span class="nick">hy_***</span><span class="stars">★★★★☆</span></div>
+        <p>다른 앱은 다 비슷한 말이었는데 여긴 내 얘기를 콕 집어서 함. 끝에 위로까지.</p>
+      </div>
+    </div>
+    <p class="rev-note">※ 실제 후기 영역 — 정식 오픈 후 실사용 리뷰로 교체됩니다.</p>
+  </div>
+</section>
+
+<!-- ⑦ 최종 CTA + 이메일 -->
+<section class="final" id="capture">
+  <div class="wrap reveal">
+    <div class="eyebrow">그림자사주 1호 오픈</div>
+    <h2>억눌린 기질,<br>이제 이름 붙여봐.</h2>
+    <p class="lead">정식 오픈 시 가장 먼저 — 런칭 안내를 보내드립니다.</p>
+    <form class="capture" id="capForm">
+      <input type="email" id="email" placeholder="이메일 주소" required autocomplete="email" />
+      <button type="submit" class="cta">🌑 그림자 오행 리포트 1호로 받기 →</button>
+    </form>
+    <div class="ok-msg" id="okMsg">
+      <b>접수됐어. 기다려.</b>
+      <p>그림자사주가 열리면, 네 억눌린 기질부터 비춰줄게. 입력한 정보는 런칭 안내에만 써요.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo">그림자사주<span class="accent"> 影</span></div>
+    <p>사주의 이면을 비추는 그림자 · 그림자사주<br>본 페이지는 수요검증용 미리보기입니다. 표시된 8자·갭 지수는 데모이며, 정식 서비스는 만세력 코드 계산을 기반으로 합니다.</p>
+  </div>
+</footer>
+
+<script>
+(() => {
+  "use strict";
+
+  // UTM 캡처 (소재별 전환 추적 — dream_self)
+  const _utm = (() => {
+    const p = new URLSearchParams(window.location.search);
+    return {
+      source:   p.get('utm_source')   || '',
+      medium:   p.get('utm_medium')   || '',
+      campaign: p.get('utm_campaign') || '',
+      content:  p.get('utm_content')  || 'dream_self'
+    };
+  })();
+
+  const io = new IntersectionObserver((es) => {
+    es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold:.12 });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+  let sex = "여";
+  document.querySelectorAll("#sex button").forEach(b => {
+    b.addEventListener("click", () => {
+      document.querySelectorAll("#sex button").forEach(x => x.classList.remove("on"));
+      b.classList.add("on"); sex = b.dataset.v;
+    });
+  });
+  document.querySelector('#sex button[data-v="여"]').classList.add("on");
+
+  function demoGap(seed){
+    let h = 0; for (const c of seed) h = (h*31 + c.charCodeAt(0)) >>> 0;
+    return 60 + (h % 26);
+  }
+  function bandName(g){
+    if (g <= 30) return "일치형"; if (g <= 60) return "이중형";
+    if (g <= 85) return "분열형"; return "가면형";
+  }
+
+  const $ = s => document.querySelector(s);
+
+  $("#analyze").addEventListener("click", () => {
+    const birth = $("#birth").value;
+    if (!birth){ $("#birth").focus(); $("#birth").style.borderColor = "var(--accent)"; return; }
+
+    $("#step-input").style.display = "none";
+    $("#step-loading").style.display = "block";
+
+    setTimeout(() => {
+      $("#step-loading").style.display = "none";
+      const res = $("#step-result");
+      res.style.display = "block";
+
+      const gap = demoGap(birth + $("#hour").value + sex);
+      const band = bandName(gap);
+
+      const arc = $("#arc"), C = 465;
+      requestAnimationFrame(() => { arc.style.strokeDashoffset = C - (C * gap/100); });
+
+      const gnum = $("#gnum"); let cur = 0;
+      const step = () => {
+        cur += Math.ceil((gap - cur)/8);
+        if (cur >= gap) cur = gap;
+        gnum.innerHTML = cur + "<span>/100</span>";
+        if (cur < gap) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+
+      $("#gband").textContent = band;
+      $("#gtext").textContent = gap >= 70 ? "꽤 다른 사람 수준" : "제법 다른 편";
+
+      res.scrollIntoView({ behavior:"smooth", block:"center" });
+    }, 1100);
+  });
+
+  $("#capForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = $("#email").value.trim();
+    if (!email) return;
+    try {
+      const k = "hwm_leads";
+      const arr = JSON.parse(localStorage.getItem(k) || "[]");
+      arr.push({ email, utm: _utm, at: new Date().toISOString() });
+      localStorage.setItem(k, JSON.stringify(arr));
+    } catch(_){}
+    // TODO(실집행): Formspree/Tally/자체 API로 POST. UTM 파라미터 함께 전송해 소재별 전환 분리.
+    $("#capForm").style.display = "none";
+    const ok = $("#okMsg"); ok.style.display = "block";
+    ok.scrollIntoView({ behavior:"smooth", block:"center" });
+  });
+})();
+</script>
+</body>
+</html>
