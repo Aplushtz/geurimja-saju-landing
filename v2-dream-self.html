@@ -241,6 +241,19 @@
     .vs{top:50%}
   }
 </style>
+<!-- ★ Meta Pixel — 광고 집행 시 YOUR_PIXEL_ID를 실제 픽셀 ID로 교체 -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+var PIXEL_ID = "YOUR_PIXEL_ID"; // 교체 필요
+if (PIXEL_ID !== "YOUR_PIXEL_ID") {
+  fbq('init', PIXEL_ID);
+  fbq('track', 'PageView');
+}
+</script>
 </head>
 <body>
 
@@ -578,6 +591,7 @@
         })
       }).catch(() => {});
     }
+    if (typeof fbq !== "undefined") fbq('track', 'Lead');
     $("#capForm").style.display = "none";
     const ok = $("#okMsg"); ok.style.display = "block";
     ok.scrollIntoView({ behavior:"smooth", block:"center" });
