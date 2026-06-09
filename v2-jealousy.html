@@ -552,7 +552,9 @@
     }, 1100);
   });
 
-  $("#capForm").addEventListener("submit", (e) => {
+  // ★ 실집행 시: formspree.io 무료 계정 → 새 폼 생성 → ID를 아래 FORMSPREE_ID에 붙여넣기
+  const FORMSPREE_ID = "YOUR_FORMSPREE_ID";
+  $("#capForm").addEventListener("submit", async (e) => {
     e.preventDefault();
     const email = $("#email").value.trim();
     if (!email) return;
@@ -562,7 +564,20 @@
       arr.push({ email, utm: _utm, at: new Date().toISOString() });
       localStorage.setItem(k, JSON.stringify(arr));
     } catch(_){}
-    // TODO(실집행): Formspree/Tally/자체 API로 POST. UTM 파라미터 함께 전송해 소재별 전환 분리.
+    if (FORMSPREE_ID !== "YOUR_FORMSPREE_ID") {
+      fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          utm_source: _utm.source,
+          utm_medium: _utm.medium,
+          utm_campaign: _utm.campaign,
+          utm_content: _utm.content,
+          page: location.href
+        })
+      }).catch(() => {});
+    }
     $("#capForm").style.display = "none";
     const ok = $("#okMsg"); ok.style.display = "block";
     ok.scrollIntoView({ behavior:"smooth", block:"center" });
